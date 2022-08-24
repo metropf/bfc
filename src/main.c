@@ -2,7 +2,6 @@
 #include <stdlib.h>
 #include <stdint.h>
 #include <string.h>
-#include <unistd.h>
 
 #include "bfc.h"
 
@@ -23,7 +22,7 @@ int main(int argc, char **argv)
 	for (uint32_t i = 1; i < argc; ++i) {
 		const char *file_name = argv[i];
 		char *src = read_file(file_name);
-		char *output = bfc_compile(file_name, src);
+		char *output = bfc_compile(src);
 		free(src);
 
 		char *out_file_name = bf_to_c_extension(file_name + get_file_name_in_path_index(file_name));
